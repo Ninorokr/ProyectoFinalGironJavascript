@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel = "stylesheet" href="styles/style.css">
+    
+    <title>Mercado 3 de enero 🍎🍇🍍</title>
+</head>
+<body>
+    <header>
+        <h1>🍎🍇🍍 Mercado 3 de enero 🍎🍇🍍</h1>
+        <ul>
+            <li><a>Catálogo</a></li>
+            <li><a>Sedes</a></li>
+            <li><a>Contacto</a></li>
+        </ul>
+    </header>
+    <hr>
+    <div class="buscador">
+        <h3>Buscador:</h3>
+        <input id="inputBusqueda" placeholder="Empiece a escribir aquí">
+        <button id="btnBuscar">Buscar</button>
+    </div>
+    <!-- INSERTAR CÓDIGO AQUÍ CON JS -->
+    <main id="main">
+        <button class="botonControl" id="btnToggleCatalogoCarrito">Ver Carrito</button>
+        <div id="divCatalogo">
+            <h1>Catálogo</h1>
+            <div id="contenedorProductos"></div>
+        </div>
+        <div class="oculto" id="divCarrito">
+        </div>
+    </main>
+    <button class="botonControl" id="btnComprar">COMPRAR</button>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Kanit";
+    src: url("../Kanit-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Lobster";
+    src: url("../LobsterTwo-Regular.ttf");
+}
+
+html {
+    min-height: 100vh;
+    height: fit-content;
+}
+
+
+header {
+    /*background-color: rgb(118, 178, 231);*/
+    background: linear-gradient(180deg, rgba(118,178,231,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+body {
+    background: linear-gradient(0deg, rgb(65, 255, 223) 0%, rgba(0,212,255,1) 35%);
+}
+
+h1 {
+    /*height: 100px;*/
+    min-width: max-content;
+    font-size: 32pt;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 25px;
+    color: rgb(216, 238, 89);
+    /*background: -webkit-linear-gradient(#848a8a, #ff0000);
+    -webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+    font-family: "Lobster";
+    text-shadow: 1px 1px 1px black;
+}
+
+ul {
+    list-style-type: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: "Lobster";
+    font-size: 20pt;
+    color: rgb(216, 238, 89);
+    text-shadow: 1px 1px 1px black;
+}
+
+li {
+    margin: 0px 25px;
+}
+
+header a:hover {
+    /*font-size: 26px;*/
+    color: rgb(136, 150, 56);
+    text-shadow: 1px 1px 1px black;
+}
+
+hr {
+    /*border: none;*/
+    border-top: 15px double #c17eff;
+    /*color: #457979;*/
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+  }
+
+.buscador {
+    margin: 20px;
+    font-family: Lobster;
+    font-size: 14pt;
+    color: rgb(216, 238, 89);
+    text-shadow: 1px 1px 1px black;
+}
+
+.buscador input{
+    font-size: 14pt;
+}
+
+.buscador button {
+    font-size: 14pt;
+}
+
+/* main {
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+#contenedorProductos {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center; 
+}
+
+.tarjeta {
+    border-radius: 5%;
+    min-width: fit-content;
+    max-width: 10vw;
+    /*max-width: fit-content;*/
+    /*width: 30vh;*/
+    background-color: white;
+    margin: 2vw;
+    box-shadow: 10px 10px 5px rgb(0, 155, 186);
+}
+
+.tarjeta img {
+    margin-top: 10%;
+    /*margin: 5% 5% 0% 5%;*/
+    /*margin-bottom: 0%;*/
+    min-height: 200px;
+    height: 20vh;
+}
+
+.propiedades {
+    margin: 5%;
+    /* margin-top: 0%; */
+    padding: 5%;
+}
+
+.propiedades p {
+    font-family: "Kanit";
+    font-size: 14pt;
+}
+
+.contador {
+    display: flex;
+    flex-wrap: wrap;
+    /*align-content: center;*/
+    justify-content: center;
+    margin: 5%;
+    padding: 5%;
+}
+
+.contador input {
+    max-width: 25%;
+    font-size: 15pt; /*Esto rompe el tamaño de las tarjetas*/
+    border: inset grey;
+}
+
+.boton {
+    border-radius: 15%;
+    padding: 15px;
+    size: 5%;
+    width: 50px;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.menos {
+    background: linear-gradient(135deg, rgba(255,0,0,1) 60%, rgba(195,0,0,1) 100%);
+    box-shadow: 2px 2px 5px rgb(140, 0, 0);
+    margin-right: 5px;
+    /* padding-left: 13%; */
+    /* width: 30%; */
+}
+
+/* .menos:active {
+    background: linear-gradient(135deg, rgba(255,0,0,1) 60%, rgba(195,0,0,1) 100%);
+    box-shadow: 2px 2px 5px rgb(140, 0, 0);
+    margin-right: 5px;
+    padding-left: 6.50%;
+    width: 10%;
+    height: 10%;
+} */
+
+.mas {
+    background: linear-gradient(135deg, rgb(173, 255, 47) 60%, rgb(122, 182, 33) 100%);
+    box-shadow: 2px 2px 5px rgb(81, 121, 22);
+    background-color: rgb(173, 255, 47);
+    margin-left: 5px;
+    /* padding-right: 20%; */
+    /* width: 30% */
+}
+
+.divCarrito {
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjetaProdCarrito {
+    border-radius: 30px;
+    min-width: 600px;
+    max-width: 50vw;
+    min-height: 80px; 
+    max-height: 5vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 0% 2% 0% 0%;
+    /*max-width: fit-content;*/
+    /*width: 30vh;*/
+    background-color: white;
+    margin: 2vw;
+    box-shadow: 10px 10px 5px rgb(0, 155, 186);
+}
+
+.tarjetaProdCarrito img {
+    width: 5vw;
+    flex-basis: 15%;
+    /* margin-top: 10%; */
+    padding: 0% 0% 0% 5%;
+    /*margin-bottom: 0%;*/
+    /* min-height: 100px; */
+    /* height: 10vh; */
+}
+
+.propiedadesProdCarrito {
+    display: flex;
+    flex-basis: 85%;
+    justify-content: space-between;
+    align-items: center;
+    /*margin: 2.5% 5% 2.5% 5%; */
+    /* margin-top: 0%; */
+    /* padding: 0% 2% 0% 5%; */
+}
+
+.propiedadesProdCarrito p {
+    font-family: "Kanit";
+    font-size: 14pt;
+    /* padding: 5vw; */
+}
+
+#nomProductoCarrito {
+    max-width: 20%;
+    padding-left: 2%;
+}
+
+.contadorProdCarrito {
+    display: flex;
+    /*align-content: center;*/
+    /* justify-content: center; */
+    /* margin: 5%; */
+    /* padding: 5%; */
+}
+
+.contadorProdCarrito input {
+    max-width: 25%;
+    font-size: 15pt; /*Esto rompe el tamaño de las tarjetas*/
+    border: inset grey;
+}
+
+.botonControl {
+    height: 40px;
+    font-size: 14pt;
+}
+
+#btnComprar {
+    margin: 5%;
+}
+
+.oculto {
+    display: none;
+}
+
+
+
+
+
