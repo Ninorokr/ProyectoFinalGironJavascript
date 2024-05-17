@@ -43,9 +43,7 @@ function contarMenosProducto(e) {
 
 function contarMasProducto(e) {
     let id = e.target.id.replace(/^\D+/g, '')
-
     let contador = document.getElementById("cantidad" + id)
-
     /* console.log(e.target.id + " | " + contador.id) */
     contador.value >= 0 && contador.value++
     let event = new CustomEvent('actualizacion', { detail: contador.value })
@@ -217,14 +215,33 @@ function renderizarCarrito() {
 }
 
 function finalizarCompra() {
-    localStorage.removeItem("carrito")
-    renderizarProductos(catalogo)
-    renderizarCarrito([])
-    Swal.fire({
-        title: "Compra realizada con éxito",
-        text: "¡Gracias por comprar con nosotros!",
-        icon: "success"
-      });
+
+    let carrito = JSON.parse(localStorage.getItem("carrito"))
+
+    if (carrito) {
+        if(carrito.length == 0) {
+            Swal.fire({
+                title: "El carrito está vacío",
+                text: "No has agregado productos al carrito 🤷‍♂️",
+                icon: "error"
+              });
+        } else {
+            Swal.fire({
+                title: "Compra realizada con éxito",
+                text: "¡Gracias por comprar con nosotros!",
+                icon: "success"
+              });
+            localStorage.removeItem("carrito")
+            renderizarProductos(catalogo)
+            renderizarCarrito([])
+        }
+    } else {
+        Swal.fire({
+            title: "El carrito está vacío",
+            text: "No has agregado productos al carrito 🤷‍♂️",
+            icon: "error"
+          });
+    }
 }
 
 function toggleCatalogoCarrito() {
@@ -237,17 +254,9 @@ function toggleCatalogoCarrito() {
         botonVerCatalogoCarrito.innerText = "Ver Carrito"
         divCatalogo.className = ""
         divCarrito.className = "oculto"
-        /* Toastify({
-            text: "Catálogo",
-            duration: 3000
-            }).showToast(); */
     } else {
         botonVerCatalogoCarrito.innerText = "Ver Catálogo"
         divCatalogo.className = "oculto"
         divCarrito.className = ""
-        /* Toastify({
-            text: "Carrito",
-            duration: 3000
-            }).showToast(); */
     }
 }
