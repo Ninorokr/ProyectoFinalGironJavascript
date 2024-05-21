@@ -32,7 +32,7 @@ async function principal() {
     inputBusqueda.addEventListener("input", () => filtrarYRenderizar(catalogo))
 
     let botonComprar = document.getElementById("btnComprar")
-    botonComprar.addEventListener("click", () => finalizarCompra(catalogo))
+    botonComprar.addEventListener("click", (e) => finalizarCompra(catalogo, e))
 }
 
 function contarMenosProducto(e) {
@@ -217,7 +217,7 @@ function renderizarCarrito() {
     }
 }
 
-function finalizarCompra(catalogo) {
+function finalizarCompra(catalogo, e) {
     console.log("Ejecutando funcion finalizarCompra(catalogo)")
     let carrito = JSON.parse(localStorage.getItem("carrito"))
 
@@ -249,6 +249,8 @@ function finalizarCompra(catalogo) {
             icon: "error"
           });
     }
+
+    e.target.className = "vacio"
 }
 
 function toggleCatalogoCarrito() {
