@@ -1,5 +1,5 @@
 //TODO: AGREGAR PROPIEDAD STOCK
-var catalogo = [
+/* var catalogo = [
     {id: 1, nombre: "Manzana caña", categoria: "fruta", peso: 0.250, precio: 1.80, ruta: "imagenes/manzana.jpg"},
     {id: 2, nombre: "Cebolla roja", categoria: "verdura", peso: 0.200, precio: 0.30, ruta: "imagenes/cebolla.webp"},
     {id: 3, nombre: "Coliflor", categoria: "verdura", peso: 0.800, precio: 1.00, ruta: "imagenes/coliflor.webp"},
@@ -8,13 +8,16 @@ var catalogo = [
     {id: 6, nombre: "Pera", categoria: "fruta", peso: 0.150, precio: 1.30, ruta: "imagenes/pera.jpg"},
     {id: 7, nombre: "Pitahaya", categoria: "fruta", peso: 0.200, precio: 2.00, ruta: "imagenes/pitahaya.webp"},
     {id: 8, nombre: "Poro", categoria: "verdura", peso: 0.150, precio: 0.50, ruta: "imagenes/poro.webp"}
-]
+] */
 
 const obtenerCarritoLS = () => JSON.parse(localStorage.getItem("carrito")) || []
 
-principal(catalogo)
+principal()
 
-function principal(catalogo) {
+async function principal() {
+
+    const response = await fetch("./catalogo.json")
+    const catalogo = await response.json()
    
     renderizarProductos(catalogo)
     renderizarCarrito()
