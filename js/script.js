@@ -32,7 +32,7 @@ async function principal() {
     inputBusqueda.addEventListener("input", () => filtrarYRenderizar(catalogo))
 
     let botonComprar = document.getElementById("btnComprar")
-    botonComprar.addEventListener("click", finalizarCompra)
+    botonComprar.addEventListener("click", () => finalizarCompra(catalogo))
 }
 
 function contarMenosProducto(e) {
@@ -217,18 +217,21 @@ function renderizarCarrito() {
     }
 }
 
-function finalizarCompra() {
-
+function finalizarCompra(catalogo) {
+    console.log("Ejecutando funcion finalizarCompra(catalogo)")
     let carrito = JSON.parse(localStorage.getItem("carrito"))
 
     if (carrito) {
+        console.log(carrito)
         if(carrito.length == 0) {
+            console.log("carrito.length esta vacío")
             Swal.fire({
                 title: "El carrito está vacío",
                 text: "No has agregado productos al carrito 🤷‍♂️",
                 icon: "error"
               });
         } else {
+            console.log("carrito tiene items, realizar compra")
             Swal.fire({
                 title: "Compra realizada con éxito",
                 text: "¡Gracias por comprar con nosotros!",
@@ -236,9 +239,10 @@ function finalizarCompra() {
               });
             localStorage.removeItem("carrito")
             renderizarProductos(catalogo)
-            renderizarCarrito([])
+            renderizarCarrito()
         }
     } else {
+        console.log(carrito)
         Swal.fire({
             title: "El carrito está vacío",
             text: "No has agregado productos al carrito 🤷‍♂️",
