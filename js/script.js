@@ -1,15 +1,3 @@
-//TODO: AGREGAR PROPIEDAD STOCK
-/* var catalogo = [
-    {id: 1, nombre: "Manzana caña", categoria: "fruta", peso: 0.250, precio: 1.80, ruta: "imagenes/manzana.jpg"},
-    {id: 2, nombre: "Cebolla roja", categoria: "verdura", peso: 0.200, precio: 0.30, ruta: "imagenes/cebolla.webp"},
-    {id: 3, nombre: "Coliflor", categoria: "verdura", peso: 0.800, precio: 1.00, ruta: "imagenes/coliflor.webp"},
-    {id: 4, nombre: "Lim\u006F\u0301n", categoria: "verdura", peso: 0.080, precio: 0.10, ruta: "imagenes/limón.webp"},
-    {id: 5, nombre: "Palta Hass", categoria: "verdura", peso: 0.200, precio: 2.20, ruta: "imagenes/palta.jpg"},
-    {id: 6, nombre: "Pera", categoria: "fruta", peso: 0.150, precio: 1.30, ruta: "imagenes/pera.jpg"},
-    {id: 7, nombre: "Pitahaya", categoria: "fruta", peso: 0.200, precio: 2.00, ruta: "imagenes/pitahaya.webp"},
-    {id: 8, nombre: "Poro", categoria: "verdura", peso: 0.150, precio: 0.50, ruta: "imagenes/poro.webp"}
-] */
-
 const obtenerCarritoLS = () => JSON.parse(localStorage.getItem("carrito")) || []
 
 principal()
@@ -38,7 +26,6 @@ async function principal() {
 function contarMenosProducto(e) {
     let id = e.target.id.replace(/^\D+/g, '')
     let contador = document.getElementById("cantidad" + id)
-    /* console.log(e.target.id + " | " + contador.id) */
     contador.value > 0 && contador.value--
     let event = new CustomEvent('actualizacion', { detail: contador.value })
     contador.dispatchEvent(event)
@@ -47,7 +34,6 @@ function contarMenosProducto(e) {
 function contarMasProducto(e) {
     let id = e.target.id.replace(/^\D+/g, '')
     let contador = document.getElementById("cantidad" + id)
-    /* console.log(e.target.id + " | " + contador.id) */
     contador.value >= 0 && contador.value++
     let event = new CustomEvent('actualizacion', { detail: contador.value })
     contador.dispatchEvent(event)
@@ -104,8 +90,6 @@ function renderizarProductos(catalogo) {
     let botonMas
 
     for(let i = 0; i < catalogo.length; i++) {
-        /* cantidad = document.getElementById("cantidad" + catalogo[i].id)
-        cantidad.addEventListener("change", (e) => agregarProductoAlCarrito(e, catalogo)) */
         cantidad = document.getElementById("cantidad" + catalogo[i].id)
         cantidad.addEventListener("actualizacion", (e) => agregarProductoAlCarrito(e, catalogo))
 
@@ -117,9 +101,7 @@ function renderizarProductos(catalogo) {
 }
 
 function agregarProductoAlCarrito(e, catalogo) { //modificarCantidadCarrito (agregar o quitar)
-    /* console.log("idDelProducto: " + e.target.id) */
     let cantidad = Number(e.target.value)
-    /* console.log("Cantidad: " + cantidad) */
     let carrito = obtenerCarritoLS()
     let idDelProducto = Number(e.target.id.replace(/^\D+/g, ''))
     
@@ -127,8 +109,6 @@ function agregarProductoAlCarrito(e, catalogo) { //modificarCantidadCarrito (agr
     let productoBuscado = catalogo.find(producto => producto.id === idDelProducto)
 
     if (posProductoEnCarrito == -1) {
-        /* console.log("No se ubicó el producto " + productoBuscado.nombre + " en el carrito")
-        console.log("Su peso es: " + productoBuscado.peso) */
         carrito.push({
             id: productoBuscado.id,
             nombre: productoBuscado.nombre,
@@ -145,7 +125,6 @@ function agregarProductoAlCarrito(e, catalogo) { //modificarCantidadCarrito (agr
             duration: 3000
             }).showToast();
     } else {
-        /* console.log("Se ubicó el producto " + productoBuscado.nombre + " en el carrito") */
         carrito[posProductoEnCarrito].cantidad = cantidad
         carrito[posProductoEnCarrito].pesoTotal = Math.round(carrito[posProductoEnCarrito].peso * cantidad * 100) / 100
         carrito[posProductoEnCarrito].costoTotal = Math.round(carrito[posProductoEnCarrito].precio * cantidad * 100) / 100
@@ -202,14 +181,10 @@ function renderizarCarrito() {
         divCarrito.appendChild(tarjetaProdCarrito)
     })
 
-    
-    /* let inputCantidadCarrito */
     let botonMenos
     let botonMas
 
     for(let i = 0; i < carrito.length; i++) {
-        /* inputCantidadCarrito = document.getElementById("cantidadCarrito" + catalogo[i].id)
-        inputCantidadCarrito.addEventListener("actualizacion", (e) => agregarProductoAlCarrito(e, catalogo)) */
         botonMenos = document.getElementById("botonMenosCarrito" + carrito[i].id)
         botonMenos.addEventListener("click", (e) => contarMenosProducto(e))
         botonMas = document.getElementById("botonMasCarrito" + carrito[i].id)
@@ -218,20 +193,16 @@ function renderizarCarrito() {
 }
 
 function finalizarCompra(catalogo, e) {
-    console.log("Ejecutando funcion finalizarCompra(catalogo)")
     let carrito = JSON.parse(localStorage.getItem("carrito"))
 
     if (carrito) {
-        console.log(carrito)
         if(carrito.length == 0) {
-            console.log("carrito.length esta vacío")
             Swal.fire({
                 title: "El carrito está vacío",
                 text: "No has agregado productos al carrito 🤷‍♂️",
                 icon: "error"
               });
         } else {
-            console.log("carrito tiene items, realizar compra")
             Swal.fire({
                 title: "Compra realizada con éxito",
                 text: "¡Gracias por comprar con nosotros!",
@@ -242,7 +213,6 @@ function finalizarCompra(catalogo, e) {
             renderizarCarrito()
         }
     } else {
-        console.log(carrito)
         Swal.fire({
             title: "El carrito está vacío",
             text: "No has agregado productos al carrito 🤷‍♂️",
