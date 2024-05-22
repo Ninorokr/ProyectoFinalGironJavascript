@@ -250,7 +250,7 @@ function finalizarCompra(catalogo, e) {
           });
     }
 
-    e.target.className = "vacio"
+    
 }
 
 function toggleCatalogoCarrito() {
