@@ -20,7 +20,7 @@ async function principal() {
     const catalogo = await response.json()
    
     renderizarProductos(catalogo)
-    renderizarCarrito()
+    /* renderizarCarrito() */
 
     let botonBuscar = document.getElementById("btnBuscar")
     botonBuscar.addEventListener("click", () => filtrarYRenderizar(catalogo))
@@ -156,7 +156,7 @@ function agregarProductoAlCarrito(e, catalogo) { //modificarCantidadCarrito (agr
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito))
-    renderizarCarrito()
+    /* renderizarCarrito() */
 }
 
 function quitarProductoDelCarrito(carrito, idDelProducto) {
@@ -201,6 +201,7 @@ function renderizarCarrito() {
 
         divCarrito.appendChild(tarjetaProdCarrito)
     })
+    divCarrito.innerHTML = `<button class="botonControl" id="btnComprar">COMPRAR</button>`
 
     
     /* let inputCantidadCarrito */
@@ -249,8 +250,6 @@ function finalizarCompra(catalogo, e) {
             icon: "error"
           });
     }
-
-    e.target.className = "vacio"
 }
 
 function toggleCatalogoCarrito() {
@@ -260,6 +259,7 @@ function toggleCatalogoCarrito() {
     let divCarrito = document.getElementById("divCarrito")
     
     if(divCatalogo.className == "oculto") {
+        renderizarCarrito()
         botonVerCatalogoCarrito.innerText = "Ver Carrito"
         divCatalogo.className = ""
         divCarrito.className = "oculto"
