@@ -31,8 +31,8 @@ async function principal() {
     let inputBusqueda = document.getElementById("inputBusqueda")
     inputBusqueda.addEventListener("input", () => filtrarYRenderizar(catalogo))
 
-    let botonComprar = document.getElementById("btnComprar")
-    botonComprar.addEventListener("click", (e) => finalizarCompra(catalogo, e))
+    /* let botonComprar = document.getElementById("btnComprar")
+    botonComprar.addEventListener("click", (e) => finalizarCompra(catalogo, e)) */
 }
 
 function contarMenosProducto(e) {
@@ -156,7 +156,7 @@ function agregarProductoAlCarrito(e, catalogo) { //modificarCantidadCarrito (agr
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito))
-    /* renderizarCarrito() */
+    renderizarCarrito()
 }
 
 function quitarProductoDelCarrito(carrito, idDelProducto) {
@@ -259,11 +259,11 @@ function toggleCatalogoCarrito() {
     let divCarrito = document.getElementById("divCarrito")
     
     if(divCatalogo.className == "oculto") {
-        renderizarCarrito()
         botonVerCatalogoCarrito.innerText = "Ver Carrito"
         divCatalogo.className = ""
         divCarrito.className = "oculto"
     } else {
+        renderizarCarrito()
         botonVerCatalogoCarrito.innerText = "Ver Catálogo"
         divCatalogo.className = "oculto"
         divCarrito.className = ""
