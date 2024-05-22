@@ -249,8 +249,6 @@ function finalizarCompra(catalogo, e) {
             icon: "error"
           });
     }
-
-    
 }
 
 function toggleCatalogoCarrito() {
